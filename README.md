@@ -1,5 +1,12 @@
 # 0x02. AirBnB clone - MySQL
 
+`Release date: Dec-23-2021`
+<!-- share on twitter -->
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fralexrivero%2FAirBnB_clone_v2)](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fralexrivero%2FAirBnB_clone_v2)
+
+<img src="img/homehero.png" alt="airbnb clone v2>
+
+
 > This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
 
 ## Repository Contents by Project Task
@@ -167,7 +174,7 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 
 ## Credits
 
-> Team project: Sebastian & Ronald*
+> *Team project: Sebastian & Ronald*
 
 Sebastian
 
