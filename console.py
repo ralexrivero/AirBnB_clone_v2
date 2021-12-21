@@ -125,10 +125,20 @@ class HBNBCommand(cmd.Cmd):
         key_lis = []
         if len(arg_lis) > 1:
             for arg in arg_lis[1:]:
+                values = arg.split('=', 1)
                 try:
-                    values = arg.split('=', 1)
-                    out = [values[0], ' '.join(values[1][1:-1].split('_'))]
-                    key_lis.append(out)
+                    if values[1][0] == '"' and values[1][-1] == '"':
+                        out = [values[0], ' '.join(values[1][1:-1].split('_'))]
+                        key_lis.append(out)
+                        continue
+                    try:
+                        num = float(values[1])
+                        if '.' not in values[1]:
+                            num = int(values[1])
+                        out = [values[0], num]
+                        key_lis.append(out)
+                    except ValueError:
+                        continue
                 except IndexError:
                     continue
         new_instance = HBNBCommand.classes[arg_lis[0]]()
