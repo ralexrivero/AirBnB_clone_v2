@@ -12,40 +12,42 @@ class DBStorage:
         """ init """
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             env["HBNB_MYSQL_USER"],
+            env["HBNB_MYSQL_PWD"],
             env["HBNB_MYSQL_HOST"],
             env["HBNB_MYSQL_DB"]
-            env["HBNB_MYSQL_PWD"],
         ), pool_pre_ping=True)
-        if env["HBNB_ENV"] == "test":
+        if env.get("HBNB_ENV") == "test":
             meta = MetaData(self.__engine)
             meta.reflect()
             meta.drop_all()
     
     def all(self, cls=None):
         """ all """
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
+        refs = {
+                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
+                    'State': State, 'City': City, 'Amenity': Amenity,
+                    'Review': Review
+        }
+        classes = []
         if cls is None:
-            from models.base_model import BaseModel
-            from models.user import User
-            from models.place import Place
-            from models.state import State
-            from models.city import City
-            from models.amenity import Amenity
-            from models.review import Review
-            quer = self.__session.query(
-                BaseModel,
-                User,
-                Place,
-                State,
-                City,
-                Amenity,
-                Review
-            ).all()
+            classes.append(State)
+            classes.append(City)
         else:
-            quer = self.__session.query().all()
+            classes.append(refs[cls])
         out = {}
-        for obj in quer:
-            key = "{}.{}".format(obj.__class__.__name__, object.id)
-            out[key] = obj
+        for clas in classes:
+            quer = self.__session.query(clas).all()
+            for obj in quer:
+                key = "{}.{}".format(obj.__class__.__name__, obj.id)
+                print("KEY IS: {}".format(key))
+                out[key] = obj
         return out
 
     def new(self, obj):
@@ -63,7 +65,7 @@ class DBStorage:
     
     def reload(self):
         """ reload """
-        from models.base_model import BaseModel, Base
+        from models.base_model import Base
         from models.user import User
         from models.place import Place
         from models.state import State

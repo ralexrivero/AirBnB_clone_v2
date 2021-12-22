@@ -4,11 +4,11 @@ import uuid
 from datetime import datetime
 from sqlalchemy import Column, DateTime, String
 from sqlalchemy.ext.declarative import declarative_base
-import datetime
+from datetime import datetime
 Base = declarative_base()
 
 
-class BaseModel(Base):
+class BaseModel:
     """A base class for all hbnb models"""
     id = Column(String(60), nullable=False, primary_key=True)
     created_at = Column(DateTime(), nullable=False, default=datetime.utcnow())
@@ -18,8 +18,8 @@ class BaseModel(Base):
         """Instatntiates a new model"""
         if not kwargs:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
         else:
             kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
                                                      '%Y-%m-%dT%H:%M:%S.%f')
