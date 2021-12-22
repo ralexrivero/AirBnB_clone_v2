@@ -4,10 +4,12 @@ from sqlalchemy import create_engine, MetaData
 from os import environ as env
 from sqlalchemy.orm import sessionmaker, scoped_session
 
+
 class DBStorage:
     """This class manages storage of hbnb models on a SQL DB"""
     __engine = None
     __session = None
+
     def __init__(self):
         """ init """
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
@@ -20,7 +22,7 @@ class DBStorage:
             meta = MetaData(self.__engine)
             meta.reflect()
             meta.drop_all()
-    
+
     def all(self, cls=None):
         """ all """
         from models.base_model import BaseModel
@@ -53,16 +55,16 @@ class DBStorage:
     def new(self, obj):
         """ new """
         self.__session.add(obj)
-    
+
     def save(self):
         """ save """
         self.__session.commit()
-    
+
     def delete(self, obj=None):
         """ delete """
         if obj is not None:
             self.__session.delete(obj)
-    
+
     def reload(self):
         """ reload """
         from models.base_model import Base
@@ -74,6 +76,6 @@ class DBStorage:
         from models.review import Review
 
         Base.metadata.create_all(self.__engine)
-        Session = scoped_session(sessionmaker(expire_on_commit=False, bind=self.__engine))
+        Session = scoped_session(
+                 sessionmaker(expire_on_commit=False, bind=self.__engine))
         self.__session = Session()
-
