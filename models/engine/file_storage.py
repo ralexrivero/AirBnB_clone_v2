@@ -15,6 +15,14 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
+    def delete(self, obj=None):
+        """to delete obj from __objects if it's inside -
+        if obj is equal to None, the method should not do anything"""
+        try:
+            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
+        except (AttributeError, KeyError):
+            pass
+
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
         if cls is not None:
@@ -33,9 +41,12 @@ class FileStorage:
 
     def save(self):
         """Saves storage dictionary to file"""
-        od = {o: self.__objects[o].to_dict() for o in self.__objects.keys()}
-        with open(self.__file_path, "w", encoding="utf-8") as f:
-            json.dump(od, f)
+        with open(FileStorage.__file_path, 'w') as f:
+            temp = {}
+            temp.update(FileStorage.__objects)
+            for key, val in temp.items():
+                temp[key] = val.to_dict()
+            json.dump(temp, f)
 
     def reload(self):
         """Loads storage dictionary from file"""
@@ -48,14 +59,16 @@ class FileStorage:
         except FileNotFoundError:
             pass
 
-    def delete(self, obj=None):
-        """to delete obj from __objects if it's inside -
-        if obj is equal to None, the method should not do anything"""
+        classes = {
+                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
+                    'State': State, 'City': City, 'Amenity': Amenity,
+                    'Review': Review
+                  }
         try:
-            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
-        except (AttributeError, KeyError):
+            temp = {}
+            with open(FileStorage.__file_path, 'r') as f:
+                temp = json.load(f)
+                for key, val in temp.items():
+                    self.all()[key] = classes[val['__class__']](**val)
+        except FileNotFoundError:
             pass
-
-    def close(self):
-        """ reload """
-        self.reload()

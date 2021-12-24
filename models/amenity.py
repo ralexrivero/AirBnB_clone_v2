@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel, Base
-from sqlalchemy import Table, Column, String, ForeignKey, Integer, Float
+from sqlalchemy import Column, String, ForeignKey, Integer, Float, Table
 from sqlalchemy.orm import relationship
 
 place_amenity = Table('place_amenity', Base.metadata,
@@ -15,8 +15,12 @@ place_amenity = Table('place_amenity', Base.metadata,
 
 
 class Amenity(BaseModel, Base):
+    """ class Amenity
+    """
     __tablename__ = "amenities"
     name = Column(String(128), nullable=False)
-    """Place and Amenity many to many relationship """
-    place_amenities = relationship("Place", secondary="place_amenity",
+    """ Class attribute place_amenities must represent a relationship
+    Many-To-Many between the class Place and Amenity. Please see below more
+    detail: place_amenity in the Place update """
+    place_amenities = relationship("Place", secondary='place_amenity',
                                    back_populates="_amenities")
