@@ -15,14 +15,6 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
-    def delete(self, obj=None):
-        """to delete obj from __objects if it's inside -
-        if obj is equal to None, the method should not do anything"""
-        try:
-            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
-        except (AttributeError, KeyError):
-            pass
-
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
         if cls is not None:
@@ -54,6 +46,14 @@ class FileStorage:
                     del o["__class__"]
                     self.new(eval(name)(**o))
         except FileNotFoundError:
+            pass
+
+    def delete(self, obj=None):
+        """to delete obj from __objects if it's inside -
+        if obj is equal to None, the method should not do anything"""
+        try:
+            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
+        except (AttributeError, KeyError):
             pass
 
     def close(self):
