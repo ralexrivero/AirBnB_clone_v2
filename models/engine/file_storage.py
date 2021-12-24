@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """This module defines a class to manage file storage for hbnb clone"""
 import json
-import json
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.city import City
