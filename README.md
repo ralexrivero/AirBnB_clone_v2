@@ -1,6 +1,6 @@
 # 0x02. AirBnB clone - MySQL
 
-`Release date: Dec-24-2021`
+`Release date: Dec-23-2021`
 <!-- share on twitter -->
 
 [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fralexrivero%2FAirBnB_clone_v2)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fralexrivero%2FAirBnB_clone_v2)
