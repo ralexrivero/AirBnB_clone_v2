@@ -18,15 +18,9 @@ class FileStorage:
     def delete(self, obj=None):
         """to delete obj from __objects if it's inside -
         if obj is equal to None, the method should not do anything"""
-        if obj is None:
-            return
-        dic = FileStorage.__objects
-        if obj in dic.values():
-            key = obj.__class__.name__ + '.' + str(obj.id)
-            del dic[key]
-            self.save()
-        else:
-            return
+        if obj:
+            cls = (str(type(obj)).split('.')[-1]).split('\'')[0]
+            FileStorage.__objects.pop(f'{cls}.{obj.id}')
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
