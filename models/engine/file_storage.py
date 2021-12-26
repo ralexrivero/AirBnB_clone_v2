@@ -20,10 +20,13 @@ class FileStorage:
         if obj is equal to None, the method should not do anything"""
         if obj is None:
             return
-        try:
-            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
-        except (AttributeError, KeyError):
-            pass
+        dic = FileStorage.__objects
+        if obj in dic.values():
+            key = obj.__class__.name__ + '.' + str(obj.id)
+            del dic[key]
+            self.save()
+        else:
+            return
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
