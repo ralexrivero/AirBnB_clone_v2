@@ -35,7 +35,8 @@ except:
     pass
 
 if all_objs.get(key_search) is None:
-    print("State created just before delete should not be deleted if delete has been called without object")
+    print("State created just before delete should not be deleted \
+        if delete has been called without object")
     exit(1)
 
 print("OK", end="")
