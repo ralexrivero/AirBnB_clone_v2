@@ -5,7 +5,7 @@
 
 [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fralexrivero%2FAirBnB_clone_v2)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fralexrivero%2FAirBnB_clone_v2)
 
-<img src="img/homehero.png" alt="airbnb clone v2">
+![AirBnB clone v2](img/homehero.png)
 
 > This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
 
@@ -30,7 +30,6 @@
 ## General use
 
 * First clone this repository.
-
 * Once the repository is cloned locate the "console.py" file and run it as follows:
 
 ```bash
@@ -65,16 +64,11 @@ Usage: <class_name>.<command>([<id>[name_arg value_arg]|[kwargs]])
 Advanced syntax is implemented for the following commands:
 
 * ```all``` - Shows all objects the program has access to, or all objects of a given class
-
 * ```count``` - Return number of object instances by class
-
 * ```show``` - Shows an object based on class and UUID
-
 * ```destroy``` - Destroys an object based on class and UUID
-
 * ```update``` - Updates existing attributes an object based on class name and UUID
 
-<br>
 
 ### Examples
 
@@ -184,11 +178,9 @@ $ HBNB_ENV=test HBNB_MYSQL_USER=hbnb_test HBNB_MYSQL_PWD=hbnb_test_pwd HBNB_MYSQ
 OK
 ```
 
-## Credits
+## Team project
 
-> *Team project: Sebastian & Ronald*
-
-Sebastian
+> Sebastian
 
 <a href="https://www.linkedin.com/in/sebastian-moreira-666260215/" target="_blank">  <img align="left" alt="Sebastian Moreira | LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=social&logo=linkedin" /> </a>
 
@@ -200,12 +192,7 @@ Sebastian
 
 <br/>
 
-Ronald
+> Ronald
 
-<a href="https://www.linkedin.com/in/ronald-rivero/" target="_blank">  <img align="left" alt="Ronald Rivero | LinkedIn" src="https://img.shields.io/badge/LinkedIn-blue?style=social&logo=linkedin" /> </a>
-
-<a href="https://twitter.com/ralex_uy" target="_blank">  <img align="left" alt="Ronald Rivero | Twitter" src="https://img.shields.io/twitter/follow/ralex_uy?style=social" /> </a>
-
-<a href="https://github.com/ralexrivero/" target="_blank">  <img align="left" src="https://img.shields.io/github/followers/ralexrivero?style=social" alt="Ralex | Github"> </a>
-
-<br/>
+<!-- twitter -->
+[![Twitter](https://img.shields.io/twitter/follow/ralex_uy?style=social)](https://twitter.com/ralex_uy) <!-- linkedin --> [![Linkedin](https://img.shields.io/badge/LinkedIn-+22K-blue?style=social&logo=linkedin)](https://www.linkedin.com/in/ronald-rivero/) <!-- github --> [![Github](https://img.shields.io/github/followers/ralexrivero?style=social)](https://github.com/ralexrivero/) <!-- vagrant --> [![Vagrant](https://img.shields.io/static/v1?label=&message=Vagrant%20Profile&color=1868F2&logo=vagrant&labelColor=2F333A)](https://app.vagrantup.com/ralexrivero) <!-- docker --> [![Docker](https://img.shields.io/static/v1?label=&message=Docker%20Profile&color=2496ED&logo=Docker&labelColor=2F333A)](https://hub.docker.com/u/ralexrivero)
